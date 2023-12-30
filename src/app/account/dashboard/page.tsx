@@ -1,7 +1,11 @@
 "use client";
 
+import Sidebar from "@/components/sidebar/Sidebar";
 import { useUser } from "@/hooks/useUser";
 import { supabase } from "@/supabaseClient";
+import QuickStart from "./components/QuickStart";
+import { Divider } from "@nextui-org/react";
+import PopularPacks from "./components/PopularPacks";
 
 export default function Dashboard() {
   const user = useUser();
@@ -11,15 +15,10 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
-      <b>Welcome to the Dashboard</b>
-      <button
-        onClick={() => {
-          supabase.auth.signOut().catch(console.error);
-        }}
-      >
-        Log out
-      </button>
+    <div className="p-4 w-full">
+      <QuickStart />
+      <Divider />
+      <PopularPacks />
     </div>
   );
 }
