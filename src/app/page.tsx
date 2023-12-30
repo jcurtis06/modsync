@@ -12,7 +12,7 @@ export default function Home() {
 
       <Auth />
 
-      <Link href="/create-pack">Create a modpack</Link>
+      <Link href="/account/dashboard">Create a modpack</Link>
     </div>
   );
 }
