@@ -1,4 +1,5 @@
 "use client";
+import Auth from "@/components/Auth";
 import Link from "next/link";
 
 export default function Home() {
@@ -8,6 +9,8 @@ export default function Home() {
         Welcome to <span className="text-green-400">ModSync</span>
       </p>
       <p className="text-gray-700 italic">A new way to share modpacks</p>
+
+      <Auth />
 
       <Link href="/create-pack">Create a modpack</Link>
     </div>
