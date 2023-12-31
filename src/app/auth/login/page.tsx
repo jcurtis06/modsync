@@ -3,12 +3,14 @@
 import { supabase } from "@/supabaseClient";
 import { Button, Card, CardBody, Input } from "@nextui-org/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   /** Handles when an input field is changed */
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,6 +48,8 @@ export default function Login() {
       setError(error.message);
       return;
     }
+
+    router.push("/dashboard");
   };
 
   return (
