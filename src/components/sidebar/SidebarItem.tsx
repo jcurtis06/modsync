@@ -4,17 +4,30 @@ export default function SideBarItem({
   title,
   href,
   className,
+  action,
 }: {
   title: string;
-  href: string;
+  href?: string;
   className?: string;
+  action?: () => void;
 }) {
-  return (
-    <Link
-      href={href}
-      className={`p-3 hover:bg-dark transition-all ${className}`}
-    >
-      {title}
-    </Link>
-  );
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={`p-3 hover:bg-dark transition-all ${className}`}
+      >
+        {title}
+      </Link>
+    );
+  } else if (action) {
+    return (
+      <div
+        onClick={action}
+        className={`p-3 hover:bg-dark transition-all ${className}`}
+      >
+        {title}
+      </div>
+    );
+  }
 }

@@ -6,14 +6,9 @@ import { supabase } from "@/supabaseClient";
 import QuickStart from "./components/QuickStart";
 import { Divider } from "@nextui-org/react";
 import PopularPacks from "./components/PopularPacks";
+import LoadingPage from "@/components/LoadingPage";
 
 export default function Dashboard() {
-  const user = useUser();
-
-  if (!user) {
-    return <b>Loading...</b>;
-  }
-
   return (
     <div className="p-4 w-full">
       <QuickStart />
