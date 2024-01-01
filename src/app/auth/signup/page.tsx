@@ -27,15 +27,15 @@ export default function Login() {
       return;
     }
 
-    handleSignIn();
+    handleSignUp();
     setError("");
   };
 
   /** Handles signing up via Supabase */
-  const handleSignIn = async () => {
+  const handleSignUp = async () => {
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email: formData.email,
       password: formData.password,
     });
