@@ -16,6 +16,32 @@
 	});
 
 	async function play() {
+		try {
+			const mods = await pb.collection('modpack_mods').getFullList({
+				filter: `modpack = "${modpack.id}"`
+			});
+
+			const modIds = mods.map((mod) => mod.mod);
+			console.log(modIds);
+			// get the mod urls from the mods table
+			let modUrls = [];
+			for (let modId of modIds) {
+				console.log(modId);
+				const mod = await pb.collection('mods').getOne(modId);
+				modUrls.push(mod.download_url);
+			}
+
+			console.log(modUrls);
+
+			invoke('download_mods', {
+				urls: modUrls,
+				profileName: modpack.name
+			});
+		} catch (e) {
+			console.error(e);
+			return;
+		}
+
 		let acc: MinecraftAccount | null;
 
 		try {
